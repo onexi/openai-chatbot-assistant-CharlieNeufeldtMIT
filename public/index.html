@@ -19,6 +19,8 @@
         border: 1px solid #444;
         padding: 10px;
         margin-bottom: 15px;
+        border-radius: 10px;
+        background-color: #1e1e1e;
       }
       .message.user {
         color: #0dcaf0;
@@ -26,32 +28,66 @@
       .message.assistant {
         color: #ffc107;
       }
+      /* Pink Buttons */
+      .btn-pink {
+        background-color: #ff69b4;
+        border-color: #ff69b4;
+        color: #fff;
+      }
+      .btn-pink:hover {
+        background-color: #ff85c0;
+        border-color: #ff85c0;
+      }
+      /* Container for better alignment */
+      .centered-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .form-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      /* Styling the input */
+      #assistant_name,
+      #messageInput {
+        width: 100%;
+        max-width: 400px;
+        margin-right: 10px;
+      }
     </style>
   </head>
   <body>
-    <div class="container my-5">
-      <h1 class="text-center">Assistant Chat</h1>
+    <div class="container my-5 centered-container">
+      <h1 class="text-center mb-4">Assistant Chat</h1>
 
       <!-- Assistant Selection -->
-      <div class="mb-3">
-        <label for="assistantSelect" class="form-label">Select Assistant</label>
+      <div class="form-container">
         <input
           id="assistant_name"
           type="text"
-          value="asst_2JWXaEmwhgVBotP0QDjH9Dbm"
+          class="form-control"
+          placeholder="Enter assistant name"
         />
         <button
           id="get_assistant"
-          class="btn btn-primary"
+          class="btn btn-pink"
           onclick="getAssistant()"
         >
           Get Assistant
         </button>
       </div>
+      <div id="assistant_id_display" class="text-center mt-3"></div> <!-- Place to display the assistant ID -->
+
+      <!-- Message to show when a new thread is created -->
+      <div id="newThreadMessage" class="text-center mb-3"></div>
 
       <!-- Create New Thread Button -->
       <div class="mb-3">
-        <button id="newThreadBtn" class="btn btn-primary" onclick="getThread()">
+        <button id="newThreadBtn" class="btn btn-pink" onclick="getThread()">
           Create New Thread
         </button>
       </div>
@@ -61,15 +97,8 @@
 
       <!-- Message Input -->
       <div class="input-group mb-3">
-        <button id="sendBtn" class="btn btn-success" onclick="getResponse()">
-          Send
-        </button>
-        <input
-          type="text"
-          id="messageInput"
-          class="form-control"
-          placeholder="Type your message..."
-        />
+        <input type="text" id="messageInput" class="form-control" placeholder="Type your message..." />
+        <button id="sendBtn" class="btn btn-pink" onclick="getResponse()">Send</button>
       </div>
     </div>
 
