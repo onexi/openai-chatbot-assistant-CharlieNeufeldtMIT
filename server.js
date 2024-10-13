@@ -26,7 +26,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-// Predefined assistant name-to-ID mapping (only for BankTest)
+// Predefined assistant name-to-ID mapping
 const assistantMapping = {
   'BankTest': 'asst_hBTqaeCRW8LwY5iG2r8GBEVu',
 };
@@ -44,7 +44,6 @@ app.post('/api/assistants', async (req, res) => {
   }
 
   try {
-    // Now that we have the assistant_id, we can use it with OpenAI API
     const myAssistant = await openai.beta.assistants.retrieve(assistant_id);
 
     state.assistant_id = myAssistant.id;
@@ -70,7 +69,6 @@ app.post('/api/assistants', async (req, res) => {
 
 app.post('/api/threads', async (req, res) => {
   try {
-    // Make the request to OpenAI API to create a new thread without assistant_id
     const response = await openai.beta.threads.create();
 
     // Check if the response contains the thread ID

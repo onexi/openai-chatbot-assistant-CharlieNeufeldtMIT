@@ -42,8 +42,6 @@ async function getThread() {
   }
 }
 
-
-
 // Function to send a message and get a response from the assistant
 async function getResponse() {
   console.log("getResponse() function called");
@@ -58,7 +56,7 @@ async function getResponse() {
   // Clear the input field after sending the message
   document.getElementById('messageInput').value = '';
 
-  // Display the user's message immediately
+  // Display the user's message 
   writeToMessages(`<span class="message user">${message}</span>`);
 
   try {
